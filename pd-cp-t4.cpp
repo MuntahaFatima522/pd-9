@@ -28,29 +28,31 @@ int main()
     return 0;
 }
 
-bool Check(int arr[],int size)
+bool Check(int arr[], int size)
 {
-    bool result=false;
-    int rem;
+    bool result = false;
     int num;
-    for(int j=0;j<size;j++)
+    for (int j = 0; j < size; j++)
     {
-        num=arr[j];
-        while(num!=0)
+        if (arr[j] == 7)
         {
-            rem=num%10;
-            num=arr[j]/10;
-            if(rem==7)
-            {
-                break;
-            }
-        }
-        if(rem==7)
-        {
-            result=true;
+            result = true;
             break;
+        }
+        else if (arr[j] > 9)
+        {
+            num = arr[j];
+            while (num != 0)
+            {
+                num = arr[j] % 10;
+                arr[j] = arr[j] / 10;
+                if (num == 7)
+                {
+                    result = true;
+                    break;
+                }
+            }
         }
     }
     return result;
 }
-
